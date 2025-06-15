@@ -1,3 +1,15 @@
 :root {
-    --main-text-color: #081222;
+    --header-color: #f2f4f7;
+    --main-white: #ffffff;
+    --main-dark-text-color: #101828;
+    --input-color: #f7f7f7;
+    --scroll-color: #dadde1;
+    --button-color: #3470ff;
+    --button-active-color: #0b44cd;
+    --placeholder-grey-color: #8e929a;
+    --font-family-base: 'Manrope', sans-serif;
+    --mob-container: 320px;
+    --tablet-container: 768px;
+    --desktop-container: 1200px;
+    --transition: background 250ms ease, transform 150ms ease;
 }

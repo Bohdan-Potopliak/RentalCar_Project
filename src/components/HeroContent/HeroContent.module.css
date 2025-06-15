@@ -1,0 +1,19 @@
+.content {
+    text-align: center;
+    color: var(--main-white);
+}
+
+.title {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.text {
+    font-size: 24px;
+    margin-bottom: 24px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}

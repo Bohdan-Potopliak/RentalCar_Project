@@ -1,23 +1,35 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // localStorage
-import { combineReducers } from 'redux';
-
-const dummyReducer = (state = {}, action) => state;
+import carsReducer from './cars/carsSlice';
+import filtersReducer from './filter/filtersSlice';
+import brandsReducer from './brands/brandsSlice';
+import loaderReducer from './loader/loaderSlice';
+import loadingMiddleware from './loader/loadingMiddleware';
+import favoritesReducer from './favorites/favoritesSlice';
 
 const rootReducer = combineReducers({
-  dummy: dummyReducer,
+    cars: carsReducer,
+    filters: filtersReducer,
+    brands: brandsReducer,
+    favorites: favoritesReducer,
+    loader: loaderReducer,
 });
 
 const persistConfig = {
-  key: 'root',
-  storage,
+    key: 'root',
+    storage,
+    whitelist: ['favorites'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }).concat(loadingMiddleware),
 });
 
 export const persistor = persistStore(store);

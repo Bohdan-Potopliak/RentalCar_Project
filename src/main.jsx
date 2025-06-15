@@ -7,18 +7,18 @@ import './index.css';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { store } from './redux/store.js';
+import { store, persistor } from './redux/store.js';
 import { PersistGate } from 'redux-persist/integration/react';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Router>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
-        </PersistGate>
-      </Provider>
-    </Router>
-    <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
-  </StrictMode>
+    <StrictMode>
+        <Router>
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <App />
+                    <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
+                </PersistGate>
+            </Provider>
+        </Router>
+    </StrictMode>
 );

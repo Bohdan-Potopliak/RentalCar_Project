@@ -4,15 +4,21 @@
 
 body {
     font-family: var(--font-family-base);
-    background: var(--main-background-color);
+    background: var(--main-white);
     min-width: 100vw;
     min-height: 100vh;
     margin: 0;
     overflow-x: hidden;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
+button {
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
 }
