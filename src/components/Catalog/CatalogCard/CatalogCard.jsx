@@ -2,6 +2,7 @@ import s from './CatalogCard.module.css';
 import sprite from '../../../assets/icons/symbol-defs.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavorite } from '../../../redux/favorites/favoritesSlice';
+import { useNavigate } from 'react-router-dom';
 
 const CatalogCard = ({ car }) => {
     const { img, brand, model, year, rentalPrice, rentalCompany, address, type, mileage } = car;
@@ -9,6 +10,7 @@ const CatalogCard = ({ car }) => {
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites.items);
     const isFavorite = favorites.includes(car.id);
+    const navigate = useNavigate();
 
     const handleToggleFavorite = () => {
         dispatch(toggleFavorite(car.id));
@@ -57,7 +59,7 @@ const CatalogCard = ({ car }) => {
                 </div>
             </div>
 
-            <button className={s.readMoreBtn} onClick={() => alert(`Read more about ${brand} ${model}`)}>
+            <button className={s.readMoreBtn} onClick={() => navigate(`/catalog/${car.id}`)}>
                 Read more
             </button>
         </div>
