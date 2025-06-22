@@ -1,0 +1,54 @@
+.carDetails {
+    width: 488px;
+    height: 180px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33333;
+    color: var(--main-dark-text-color);
+    margin-bottom: 8px;
+}
+
+.id {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: var(--placeholder-grey-color);
+    margin-left: 16px;
+}
+
+.location {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: var(--main-dark-text-color);
+    margin-bottom: 16px;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    fill: var(--main-dark-text-color);
+}
+
+.mileage {
+    margin-left: 16px;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33333;
+    color: var(--button-color);
+    margin-bottom: 32px;
+}
+
+.description {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: var(--main-dark-text-color);
+}

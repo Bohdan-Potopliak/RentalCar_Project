@@ -1,31 +1,40 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getCarById } from '../../api/cars'; // або /carApi залежно від назви
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCarById } from '../../redux/cars/carsSlice';
 import CarDetails from '../../components/CarDetails/CarDetails/CarDetails';
+import CarInfo from '../../components/CarDetails/CarInfo/CarInfo';
 import s from './CarDetailsPage.module.css';
 
 const CarDetailsPage = () => {
     const { id } = useParams();
-    const [car, setCar] = useState(null);
+    const dispatch = useDispatch();
+
+    const { selectedCar: car, error } = useSelector((state) => state.cars);
 
     useEffect(() => {
-        const fetchCar = async () => {
-            try {
-                const data = await getCarById(id);
-                setCar(data);
-            } catch (error) {
-                console.error('Failed to fetch car data:', error);
-            }
-        };
+        dispatch(fetchCarById(id));
+    }, [id, dispatch]);
 
-        fetchCar();
-    }, [id]);
+    if (error) return <p>Error: {error}</p>;
+    if (!car) return null;
 
-    if (!car) return <p>Loading car details...</p>;
+    const specifications = {
+        year: car.year,
+        type: car.type,
+        fuelConsumption: car.fuelConsumption,
+        engineSize: car.engineSize,
+    };
 
     return (
         <div className={s.container}>
             <CarDetails car={car} />
+            <CarInfo
+                rentalConditions={car.rentalConditions}
+                specifications={specifications}
+                accessories={car.accessories}
+                functionalities={car.functionalities}
+            />
         </div>
     );
 };
